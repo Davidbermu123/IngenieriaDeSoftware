@@ -1,0 +1,55 @@
+import javax.inject.Inject;
+import javax.mvc.Controller;
+import javax.mvc.Models;
+import javax.mvc.View;
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.PersistenceContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.transaction.Transactional;
+import javax.ws.rs.FormParam;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+
+@Path("/login")
+@Controller
+public class LoginController {
+
+    @Inject
+    private Models models;
+
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    @POST
+    @Transactional
+    @View("login.jsp")
+    public void login(
+            @FormParam("uname") String username,
+            @FormParam("psw") String password,
+            HttpServletRequest request,
+            HttpServletResponse response) {
+
+        try {
+            Usuario usuario = entityManager.createQuery("SELECT u FROM Usuario u WHERE u.username = :username", Usuario.class)
+                    .setParameter("username", username)
+                    .getSingleResult();
+
+            if (usuario.getPassword().equals(password)) {
+                // Usuario autenticado, redirigir a la página de inicio
+                request.getSession().setAttribute("usuario", usuario);
+                response.sendRedirect("/inicio");
+            } else {
+                // Contraseña incorrecta, mostrar mensaje de error
+                models.put("error", "Contraseña incorrecta");
+            }
+        } catch (NoResultException e) {
+            // Usuario no encontrado, mostrar mensaje de error
+            models.put("error", "Usuario no encontrado");
+        } catch (Exception e) {
+            // Otro error, mostrar mensaje genérico
+            models.put("error", "Ocurrió un error al intentar iniciar sesión");
+        }
+    }
+}
