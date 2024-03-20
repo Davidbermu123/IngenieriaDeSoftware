@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f2f2f2;
+}
+
+.container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  width: 400px;
+  margin: 0 auto;
+}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.cancelbtn {
+  background-color: #f44336;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  font-size: 30px;
+  color: #f44336;
+}
+
+.close:hover,
+.close:focus {
+  color: #d43535;
+  cursor: pointer;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+</head>
+<body>
+
+<h2 style="text-align:center;">Modal Signup Form</h2>
+
+<div class="container">
+  <form action="/src\paginas\principal.html">
+    <div class="imgcontainer">
+      <span class="close" title="Close Modal">&times;</span>
+    </div>
+
+    <div class="container">
+      <h1 style="text-align:center;">Sign Up</h1>
+      <p style="text-align:center;">Please fill in this form to create an account.</p>
+      <hr>
+
+      <label for="email"><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" name="email" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+
+      <label for="psw-repeat"><b>Repeat Password</b></label>
+      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+
+      <label for="nombre"><b>Nombre</b></label>
+      <input type="text" placeholder="Enter Nombre" name="nombre" required>
+
+      <label for="apellido"><b>Apellido</b></label>
+      <input type="text" placeholder="Enter Apellido" name="apellido" required>
+
+      <label for="mascota"><b>Nombre de la Mascota</b></label>
+      <input type="text" placeholder="Enter Nombre de la Mascota" name="mascota" required>
+
+      <label>
+        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+      </label>
+
+      <div class="clearfix">
+        <button type="button" class="cancelbtn" onclick="closeModal()">Cancel</button>
+        <button type="submit">Sign Up</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+var modal = document.querySelector('.container');
+var closeButton = document.querySelector('.close');
+
+function closeModal() {
+  modal.style.display = 'none';
+}
+
+closeButton.addEventListener('click', closeModal);
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>
