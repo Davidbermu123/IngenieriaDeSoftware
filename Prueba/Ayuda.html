@@ -1,11 +1,197 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hola Mundo</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actividades de Aprendizaje</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .container h1 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .container label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    .container select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+    .container .buscar-btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff; /* Color del botón "Buscar" */
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-size: 16px;
+    }
+    .container .buscar-btn:hover {
+      background-color: #0056b3;
+    }
+    #actividadesContainer {
+      margin-top: 20px;
+    }
+    .actividad {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      position: relative;
+    }
+    .actividad:hover {
+      background-color: #e9e9e9;
+    }
+    #detalleActividad {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    #detalleActividad h2 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+    #detalleActividad p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    .guardar {
+      background-color: #28a745; /* Color del botón "Guardar" */
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-size: 16px;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+    }
+    .guardar:hover {
+      background-color: #218838;
+    }
+  </style>
 </head>
 <body>
-    <h1>Hola Mundo</h1>
+  <div class="container">
+    <h1>Actividades de Aprendizaje</h1>
+    <form id="filtroForm">
+      <label for="intereses">Intereses:</label>
+      <select id="intereses">
+        <option value="">Todas</option>
+        <option value="matematicas">Matemáticas</option>
+        <option value="ciencias">Ciencias</option>
+        <option value="historia">Historia</option>
+        <option value="arte">Arte</option>
+      </select>
+      <label for="areas">Áreas de Estudio:</label>
+      <select id="areas">
+        <option value="">Todas</option>
+        <option value="programacion">Programación</option>
+        <option value="biologia">Biología</option>
+        <option value="literatura">Literatura</option>
+        <option value="dibujo">Dibujo</option>
+      </select>
+      <button type="button" class="buscar-btn" onclick="filtrarActividades()">Buscar</button>
+    </form>
+    <div id="actividadesContainer"></div>
+    <div id="detalleActividad"></div>
+  </div>
+
+  <script>
+    function filtrarActividades() {
+      var intereses = document.getElementById('intereses').value;
+      var areas = document.getElementById('areas').value;
+      document.getElementById('actividadesContainer').innerHTML = '';
+      if (intereses === 'matematicas' && areas === 'programacion') {
+        agregarActividad("Resolver problemas de programación en Python", "Python es un lenguaje de programación muy utilizado en el ámbito científico y técnico.");
+        agregarActividad("Crear algoritmos para resolver ecuaciones matemáticas", "Los algoritmos son secuencias de instrucciones utilizadas para resolver problemas computacionales.");
+      } else if (intereses === 'ciencias' && areas === 'biologia') {
+        agregarActividad("Observar células bajo el microscopio", "El estudio de las células es fundamental en biología para comprender los procesos biológicos.");
+        agregarActividad("Investigar sobre el ADN y la genética", "El ADN contiene la información genética que determina las características de los organismos vivos.");
+      } else if (intereses === 'historia' && areas === 'literatura') {
+        agregarActividad("Leer y analizar obras literarias de la época victoriana", "La literatura victoriana es un período de la literatura británica caracterizado por una amplia gama de estilos y géneros.");
+        agregarActividad("Investigar sobre la relación entre literatura y política en el siglo XX", "La literatura ha desempeñado un papel importante en la expresión de ideas políticas y sociales a lo largo de la historia.");
+        agregarActividad("Leer y analizar obras literarias de la época victoriana", "La literatura victoriana es un período de la literatura británica caracterizado por una amplia gama de estilos y géneros.");
+        agregarActividad("Investigar sobre la relación entre literatura y política en el siglo XX", "La literatura ha desempeñado un papel importante en la expresión de ideas políticas y sociales a lo largo de la historia.");
+      } else if (intereses === 'arte' && areas === 'dibujo') {
+        agregarActividad("Dibujar paisajes urbanos utilizando técnicas de perspectiva", "La perspectiva es una técnica utilizada en el dibujo para representar la profundidad y la distancia en una imagen.");
+        agregarActividad("Crear retratos realistas con lápices de colores", "El retrato es un género artístico que representa a una persona o grupo de personas de manera realista.");
+      } else {
+        agregarActividad("No hay actividades disponibles para estas selecciones", "");
+      }
+    }
+
+    function agregarActividad(actividad, detalle) {
+      var actividadesContainer = document.getElementById('actividadesContainer');
+      var actividadElement = document.createElement('div');
+      actividadElement.classList.add('actividad');
+      actividadElement.textContent = actividad;
+      actividadElement.addEventListener('click', function() {
+        mostrarDetalle(actividad, detalle);
+        mostrarDetalle(actividad, detalle);
+      });
+      
+      // Crear botón "Guardar"
+      var guardarBtn = document.createElement('button');
+      guardarBtn.textContent = 'Guardar';
+      guardarBtn.classList.add('guardar');
+      guardarBtn.addEventListener('click', function(event) {
+        event.stopPropagation(); // Evitar que el clic en el botón active el evento de la actividad
+        guardarActividad(actividad, detalle);
+      });
+      
+      actividadElement.appendChild(guardarBtn); // Agregar el botón a la actividad
+      actividadesContainer.appendChild(actividadElement);
+    }
+
+    function mostrarDetalle(actividad, detalle) {
+      var detalleActividad = document.getElementById('detalleActividad');
+      detalleActividad.innerHTML = '';
+      var tituloDetalle = document.createElement('h2');
+      tituloDetalle.textContent = actividad;
+      detalleActividad.appendChild(tituloDetalle);
+      var detalleElement = document.createElement('div');
+      detalleElement.classList.add('detalle');
+      detalleElement.textContent = detalle;
+      detalleActividad.appendChild(detalleElement);
+    }
+
+    function guardarActividad(actividad, detalle) {
+      // Aquí puedes implementar la lógica para guardar la actividad en la canasta de tareas
+      alert('Actividad guardada: ' + actividad);
+    }
+  </script>
 </body>
 </html>
