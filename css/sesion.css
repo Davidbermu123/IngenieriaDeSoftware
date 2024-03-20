@@ -1,0 +1,181 @@
+.tex-12 {
+    width: 100%; /* Hace que ocupe todo el ancho */
+    margin: 0 auto; /* Centra el elemento horizontalmente */
+}
+
+.text-center {
+    text-align: center; /* Centra el texto dentro del elemento */
+}
+
+.inicio-title {
+    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+    font-size: 34px;
+    font-weight: 700;
+    color: #111;
+}
+
+.isla {
+    background-color: #f0f0f0;
+    border: 2px solid #d2b356;
+    padding: 10px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between; /* Alinea los elementos al principio y al final */
+    align-items: center;
+    width: 1000px;
+    margin-left: auto; /* Ajusta el margen izquierdo */
+    margin-right: auto; /* Ajusta el margen derecho */
+}
+
+.opcion {
+    margin-right: 10px;
+}
+
+.checkbox-wrapper {
+    display: flex;
+    align-items: center; /* Alinea verticalmente el checkbox y su etiqueta */
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+    width: 20px; /* Ajusta el tamaño del checkbox */
+    height: 20px;
+    margin-right: 5px; /* Agrega un espacio entre el checkbox y la etiqueta */
+}
+
+.points {
+    margin: 0; /* Elimina el margen del párrafo */
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.circle-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type="text"] {
+    margin-bottom: 10px;
+    padding: 5px;
+    width: calc(100% - 10px); /* Ancho del 100% menos el padding */
+}
+
+.circle {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #d2b356;
+    border-radius: 50%;
+}
+
+.circle-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilos CSS para el contenido de la ventana modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    overflow: auto; /* Agregar desplazamiento cuando el contenido es demasiado grande */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px; /* Limitar el ancho máximo de la ventana modal */
+    text-align: center; /* Centrar el contenido de la ventana modal */
+    border-radius: 5px;
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}
+
+/* Estilos para el menú desplegable */
+.select-priority {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Estilos para el botón de enviar */
+#submitBtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+#submitBtn:hover {
+    background-color: #45a049;
+}
+
+/* Estilos para el menú desplegable */
+.ui-timepicker-wrapper {
+    z-index: 9999; /* Ajustar z-index para que esté encima del cuadro de texto */
+}
