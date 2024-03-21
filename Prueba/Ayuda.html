@@ -135,7 +135,7 @@
       var areas = document.getElementById('areas').value;
       document.getElementById('actividadesContainer').innerHTML = '';
       if (intereses === 'matematicas' && areas === 'programacion') {
-        agregarActividad("Resolver problemas de programación en Python", "Python es un lenguaje de programación muy utilizado en el ámbito científico y técnico.");
+        agregarActividad("Resolver problemas de programación en Python", "Descripción: Python es un lenguaje de programación muy utilizado en el ámbito científico y técnico.\nObjetivos: Aprender los conceptos básicos de Python, Desarrollar habilidades de resolución de problemas con Python, Aplicar Python en proyectos prácticos.\nDuración: 4 semanas");
         agregarActividad("Crear algoritmos para resolver ecuaciones matemáticas", "Los algoritmos son secuencias de instrucciones utilizadas para resolver problemas computacionales.");
       } else if (intereses === 'ciencias' && areas === 'biologia') {
         agregarActividad("Observar células bajo el microscopio", "El estudio de las células es fundamental en biología para comprender los procesos biológicos.");
@@ -177,16 +177,25 @@
     }
 
     function mostrarDetalle(actividad, detalle) {
-      var detalleActividad = document.getElementById('detalleActividad');
-      detalleActividad.innerHTML = '';
-      var tituloDetalle = document.createElement('h2');
-      tituloDetalle.textContent = actividad;
-      detalleActividad.appendChild(tituloDetalle);
-      var detalleElement = document.createElement('div');
-      detalleElement.classList.add('detalle');
-      detalleElement.textContent = detalle;
-      detalleActividad.appendChild(detalleElement);
-    }
+  var detalleActividad = document.getElementById('detalleActividad');
+  detalleActividad.innerHTML = '';
+
+  var tituloDetalle = document.createElement('h2');
+  tituloDetalle.textContent = actividad;
+  detalleActividad.appendChild(tituloDetalle);
+
+  var detalleLista = document.createElement('ul');
+  var detalleItems = detalle.split('\n'); // Dividir el detalle por saltos de línea
+  detalleItems.forEach(function(item) {
+    var detalleItem = document.createElement('li');
+    // Envolver las palabras clave en negrita
+    item = item.replace(/(Descripción|Objetivos|Duración):/g, "<strong>$1:</strong>");
+    detalleItem.innerHTML = item; // Permitir que el HTML dentro del item se interprete
+    detalleLista.appendChild(detalleItem);
+  });
+
+  detalleActividad.appendChild(detalleLista);
+}
 
     function guardarActividad(actividad, detalle) {
       // Aquí puedes implementar la lógica para guardar la actividad en la canasta de tareas
