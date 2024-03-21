@@ -564,6 +564,34 @@
 <script src="/js/lightbox.min.js"></script>
 <script src="/js/site.js"></script>
 
+<script type="text/javascript">
+
+    //En estas variables se almacena la preferencia del usuario
+    let notif= false;
+    let alarm= false;
+
+    //Quitar esta linea para que solo se muestre una vez por cada inicio se sesion
+    localStorage.setItem('alerted','no');
+
+
+    var alerted = localStorage.getItem('alerted') || '';
+    if (alerted != 'yes') {
+
+        //Las distintas cosas que se le van a preguntar por cada inicio
+        if (confirm("¿Desea recibir distintas notificaciones de nuestra app?")) {
+            notif = true;
+        } else {
+            notif = false;
+        }
+        if (confirm("¿Desea recibir distintas alarmas de nuestra app?" +"\n"+"Estas alarmas solo se activarán cuando una tarea se halla vencido o una con prioridad alta este próxima a hacerlo")) {
+            alarm = true;
+        } else {
+            alarm = false;
+        }
+
+        localStorage.setItem('alerted','yes');
+    }
+</script>
 
 </body>
 </html>
