@@ -37,6 +37,8 @@
     <!-- Animate CSS-->
     <link href="../../css/animate.css" rel="stylesheet" type="text/css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
     <!--Google Webfonts-->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
 </head>
@@ -155,8 +157,8 @@
       </section>
 
     <div class="titulo">
-        <div class="Titulo namari-color">
-            <h2>Título de la Isla</h2>
+        <div class="tex-12 text-center">
+            <h2 id="Titulo" style="font-weight: bold;"></h2>
         </div>
     </div>
 
@@ -313,9 +315,13 @@
     $isla.find('.checkbox-wrapper').append('<input type="checkbox" id="mi_checkbox" />');
     $isla.find('.checkbox-wrapper').append('<label for="mi_checkbox"></label>');
     $isla.find('.namari-color').append('<p class="points">Points: 10</p>');
-    $isla.append('<button class="boton-emergente" onclick="toggleMenu()"></button>');
-    $isla.append('<div class="menu-emergente" id="menu-emergente">');
-    $isla.find('.menu-emergente').append('<button class="boton-modificar" onclick="modificar()">Modificar</button>');
+    // Agregar el botón desplegable
+    var $dropdown = $('<div class="dropdown">');
+    $dropdown.append('<button class="dropbtn"><i class="fas fa-bars" onclick="eliminarModificar(this)"></i></button>');
+    var $dropdownContent = $('<div class="dropdown-content">');
+    $dropdownContent.append('<a href="#" onclick="eliminar()">Eliminar</a>');
+    $dropdown.append($dropdownContent);
+    $isla.append($dropdown);
 
     // Agregar la "isla" al cuerpo del documento
     $('#contenedor').append($isla);
@@ -361,12 +367,24 @@
       actualizarPuntaje(); // Llamar a la función actualizarPuntaje() cuando se cambie el estado de cualquier checkbox
     });
   });
+
+  document.addEventListener('DOMContentLoaded', function() {
+            miFuncion();
+        });
+
+        function miFuncion() {
+            var miVariable = sessionStorage.getItem('Nombre');
+            var titulotexto = document.getElementById("Titulo");
+            titulotexto.textContent = miVariable;
+        }
 </script>
 
 <script>
   function eliminar() {
-  // Lógica para eliminar
-  $(this).closest('.isla').remove();
+    // Encontrar el elemento padre (la isla) del botón eliminar
+    var isla = $(event.target).closest('.isla');
+        // Eliminar la isla del DOM
+        isla.remove();
 }
 </script>
 

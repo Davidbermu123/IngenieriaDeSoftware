@@ -1,6 +1,8 @@
 .tex-12 {
     width: 100%; /* Hace que ocupe todo el ancho */
     margin: 0 auto; /* Centra el elemento horizontalmente */
+    height: auto;
+    font-style: hesvastica;
 }
 
 .text-center {
@@ -287,7 +289,7 @@ input[type="text"] {
     display: none;
     position: absolute;
     top: 100%;
-    right: 0; /* Alinea el menú emergente a la derecha del botón */
+    left: 100%; /* Alinea el menú emergente a la derecha del botón */
     background-color: white;
     border: 1px solid #ccc;
     padding: 5px;
@@ -332,6 +334,29 @@ input[type="text"] {
       position: center;
   }
 
+  .menu-emergente {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+.menu-emergente button {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    text-align: left;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.menu-emergente button:hover {
+    background-color: #f0f0f0;
+}
   /* Estilos básicos para las tareas */
 .tarea {
     margin-bottom: 5px;
@@ -340,4 +365,35 @@ input[type="text"] {
 /* Estilos para los puntos */
 #puntos-container {
     margin-top: 20px;
+}
+
+/* Estilos para el contenido del menú desplegable */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+    right: 0; /* Posiciona el menú desplegable totalmente a la derecha */
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #ddd;
 }
