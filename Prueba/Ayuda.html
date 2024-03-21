@@ -101,6 +101,21 @@
     .guardar:hover {
       background-color: #218838;
     }
+    .enlaces-btn {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background-color: #ff9800; 
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-size: 16px;
+    }
+    .enlaces-btn:hover {
+      background-color: #f57c00;
+    }
   </style>
 </head>
 <body>
@@ -127,6 +142,7 @@
     </form>
     <div id="actividadesContainer"></div>
     <div id="detalleActividad"></div>
+    <button onclick="location.href='links.html';" class="enlaces-btn">Ir a Enlaces de Información</button>
   </div>
 
   <script>
@@ -135,19 +151,17 @@
       var areas = document.getElementById('areas').value;
       document.getElementById('actividadesContainer').innerHTML = '';
       if (intereses === 'matematicas' && areas === 'programacion') {
-        agregarActividad("Resolver problemas de programación en Python", "Python es un lenguaje de programación muy utilizado en el ámbito científico y técnico.");
-        agregarActividad("Crear algoritmos para resolver ecuaciones matemáticas", "Los algoritmos son secuencias de instrucciones utilizadas para resolver problemas computacionales.");
+        agregarActividad("Resolver problemas de programación en Python", "Descripción: Python es un lenguaje de programación muy utilizado en el ámbito científico y técnico.\nObjetivos: Aprender los conceptos básicos de Python, Desarrollar habilidades de resolución de problemas con Python, Aplicar Python en proyectos prácticos.\nDuración: 4 semanas");
+        agregarActividad("Crear algoritmos para resolver ecuaciones matemáticas", "Descripción: Desarrollar algoritmos para resolver una variedad de ecuaciones matemáticas utilizando diferentes métodos y técnicas.\nObjetivos: Dominar los conceptos básicos de las ecuaciones matemáticas, Aprender diferentes enfoques algorítmicos para resolver ecuaciones, Aplicar los algoritmos desarrollados para resolver problemas prácticos.\nDuración: 3 semanas");
       } else if (intereses === 'ciencias' && areas === 'biologia') {
-        agregarActividad("Observar células bajo el microscopio", "El estudio de las células es fundamental en biología para comprender los procesos biológicos.");
-        agregarActividad("Investigar sobre el ADN y la genética", "El ADN contiene la información genética que determina las características de los organismos vivos.");
+        agregarActividad("Observar células bajo el microscopio", "Descripción: Realizar observaciones microscópicas de células vivas y/o tejidos para estudiar su estructura y función.\nObjetivos: Entender la estructura básica de las células y sus componentes, Aprender técnicas de preparación de muestras para observación microscópica, Interpretar y analizar las observaciones realizadas bajo el microscopio.\nDuración: 2 semanas");
+        agregarActividad("Investigar sobre el ADN y la genética", "Descripción: Investigar los principios básicos del ADN, la herencia genética y los avances actuales en el campo de la genética.,\nObjetivos: Comprender la estructura y función del ADN, Analizar los procesos de herencia genética y variabilidad genética, Explorar aplicaciones prácticas de la genética en la medicina, la agricultura y otras áreas.\nDuración: 4 semanas.");
       } else if (intereses === 'historia' && areas === 'literatura') {
-        agregarActividad("Leer y analizar obras literarias de la época victoriana", "La literatura victoriana es un período de la literatura británica caracterizado por una amplia gama de estilos y géneros.");
-        agregarActividad("Investigar sobre la relación entre literatura y política en el siglo XX", "La literatura ha desempeñado un papel importante en la expresión de ideas políticas y sociales a lo largo de la historia.");
-        agregarActividad("Leer y analizar obras literarias de la época victoriana", "La literatura victoriana es un período de la literatura británica caracterizado por una amplia gama de estilos y géneros.");
-        agregarActividad("Investigar sobre la relación entre literatura y política en el siglo XX", "La literatura ha desempeñado un papel importante en la expresión de ideas políticas y sociales a lo largo de la historia.");
+        agregarActividad("Leer y analizar obras literarias de la época victoriana", "Descripción: Sumergirse en la literatura del período victoriano, explorando obras destacadas y analizando sus temas, estilos y contextos históricos.\nObjetivos: Familiarizarse con las características de la literatura victoriana, Analizar las principales obras y escritores del período, Comprender los temas sociales, políticos y culturales presentes en la literatura victoriana.\nDuración: 3 semanas");
+        agregarActividad("Investigar sobre la relación entre literatura y política en el siglo XX", "Descripción: Explorar cómo la literatura del siglo XX refleja y responde a los acontecimientos políticos y sociales de la época.\nObjetivos: Analizar obras literarias relevantes y su relación con los movimientos políticos del siglo XX, Examinar cómo los escritores abordan temas políticos en sus obras y cómo esto influye en la sociedad, Comprender el papel de la literatura como herramienta de crítica y reflexión política.\nDuración: 4 semanas");
       } else if (intereses === 'arte' && areas === 'dibujo') {
-        agregarActividad("Dibujar paisajes urbanos utilizando técnicas de perspectiva", "La perspectiva es una técnica utilizada en el dibujo para representar la profundidad y la distancia en una imagen.");
-        agregarActividad("Crear retratos realistas con lápices de colores", "El retrato es un género artístico que representa a una persona o grupo de personas de manera realista.");
+        agregarActividad("Dibujar paisajes urbanos utilizando técnicas de perspectiva", "Descripción: Explorar la técnica de perspectiva en el dibujo para representar paisajes urbanos de manera realista y tridimensional.\nObjetivos: Dominar los principios básicos de la perspectiva en el dibujo, Aplicar técnicas de perspectiva para crear sensación de profundidad y espacio en los paisajes urbanos, Desarrollar habilidades de observación y representación de la arquitectura y el entorno urbano.\nDuración: 3 semanas");
+        agregarActividad("Crear retratos realistas con lápices de colores", "Descripción: Aprender técnicas avanzadas para dibujar retratos realistas utilizando lápices de colores, centrándose en la captura de la expresión y los detalles faciales.\nObjetivos: Dominar el manejo de lápices de colores para lograr efectos realistas en el dibujo, Practicar la observación y representación precisa de los rasgos faciales, Desarrollar habilidades de sombreado, mezcla y texturización para crear retratos convincentes.\nDuración: 4 semanas");
       } else {
         agregarActividad("No hay actividades disponibles para estas selecciones", "");
       }
@@ -177,16 +191,25 @@
     }
 
     function mostrarDetalle(actividad, detalle) {
-      var detalleActividad = document.getElementById('detalleActividad');
-      detalleActividad.innerHTML = '';
-      var tituloDetalle = document.createElement('h2');
-      tituloDetalle.textContent = actividad;
-      detalleActividad.appendChild(tituloDetalle);
-      var detalleElement = document.createElement('div');
-      detalleElement.classList.add('detalle');
-      detalleElement.textContent = detalle;
-      detalleActividad.appendChild(detalleElement);
-    }
+  var detalleActividad = document.getElementById('detalleActividad');
+  detalleActividad.innerHTML = '';
+
+  var tituloDetalle = document.createElement('h2');
+  tituloDetalle.textContent = actividad;
+  detalleActividad.appendChild(tituloDetalle);
+
+  var detalleLista = document.createElement('ul');
+  var detalleItems = detalle.split('\n'); // Dividir el detalle por saltos de línea
+  detalleItems.forEach(function(item) {
+    var detalleItem = document.createElement('li');
+    // Envolver las palabras clave en negrita
+    item = item.replace(/(Descripción|Objetivos|Duración):/g, "<strong>$1:</strong>");
+    detalleItem.innerHTML = item; // Permitir que el HTML dentro del item se interprete
+    detalleLista.appendChild(detalleItem);
+  });
+
+  detalleActividad.appendChild(detalleLista);
+}
 
     function guardarActividad(actividad, detalle) {
       // Aquí puedes implementar la lógica para guardar la actividad en la canasta de tareas

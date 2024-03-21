@@ -1,11 +1,188 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hola Mundo</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Técnicas de Estudio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .container h1 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .container label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    .container select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+    .container .buscar-btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-size: 16px;
+    }
+    .container .buscar-btn:hover {
+      background-color: #0056b3;
+    }
+    #actividadesContainer {
+      margin-top: 20px;
+    }
+    .actividad {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      position: relative;
+    }
+    .actividad:hover {
+      background-color: #e9e9e9;
+    }
+    #detalleActividad {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    #detalleActividad h2 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+    #detalleActividad p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    .guardar {
+      background-color: #28a745; 
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-size: 16px;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+    }
+    .guardar:hover {
+      background-color: #218838;
+    }
+    .link-btn {
+      display: block;
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #17a2b8; 
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      text-align: center;
+    }
+    .link-btn:hover {
+      background-color: #138496;
+    }
+  </style>
 </head>
 <body>
-    <h1>Hola Mundo</h1>
+  <div class="container">
+    <h1>Técnicas de Estudio</h1>
+    <form id="filtroForm">
+      <label for="intereses">Intereses:</label>
+      <select id="intereses">
+        <option value="">Todas</option>
+        <option value="subrayar textos">Subrayar textos</option>
+        <option value="formas de manejar tu tiempo">Formas de manejar tu tiempo</option>
+        <option value="mnemotecnia">Mnemotecnia</option>
+        <option value="mapas mentales">Mapas Mentales</option>
+        <option value="fichas de estudio">Fichas de Estudio</option>
+      </select>
+      <button type="button" class="buscar-btn" onclick="filtrarActividades()">Buscar</button>
+    </form>
+    <div id="actividadesContainer"></div>
+  </div>
+  <script>
+    function filtrarActividades() {
+      var intereses = document.getElementById('intereses').value;
+      document.getElementById('actividadesContainer').innerHTML = '';
+      var links = {
+        'subrayar textos': [
+          { name: 'Cómo Resumir, Subrayar y Esquematizar Técnicas de Estudio', description: 'Vídeo explicando algunas de las técnicas de estudio como el subrayar o resumir.', url: 'https://www.youtube.com/watch?v=VK6u4kwyOT4'},
+          { name: '¿Subrayar ayuda a estudiar mejor?', description: 'Un artículo que propone la importancia de subrayar en el estudio, y comprueba que tan eficaz es', url:'https://psicologiaymente.com/inteligencia/subrayar-ayuda-estudiar-mejor' }
+        ],
+        'formas de manejar tu tiempo': [
+          { name: 'Cómo organizar tu tiempo para estudiar (y vencer la Pereza)', description: 'Un vídeo que da consejos para manejar tu tiempo, sobre todo en casa.', url: 'https://www.youtube.com/watch?v=SnWGwITaW-k' },
+          { name: 'Gestión del tiempo, la clave para triunfar en los estudios', description: 'Consejos para gestionar correctamente el tiempo durante tus estudios, ser más productivo y obtener mejores resultados', url: 'https://www.educaweb.com/contenidos/educativos/tecnicas-estudio/gestion-tiempo-clave-triunfar-estudios/' }
+        ],
+        mnemotecnia: [
+          { name: 'Mnemotecnia: Técnicas de memorización por Udemy', description: 'Un curso para aprender técnicas de memorización, especificamente la mnemotecnia', url: 'https://www.udemy.com/tutorial/become-a-learning-machine/memorization-mnemonics/' },
+          { name: 'Anki', description: 'Pagina para descargar Anki. una herramienta para recordar cosas', url: 'https://apps.ankiweb.net/' }
+        ],
+        'mapas mentales': [
+          { name: 'MindNode', description: 'Aplicación para hacer mapas mentales con una gran variedad de herramientas.', url: 'https://mindnode.com/' },
+          { name: 'Canva', description: 'Qué son los mapas mentales: Ejemplos y cómo hacerlos', url: 'https://www.canva.com/es_mx/pizarra-digital/mapas-mentales/' }
+        ],
+        'fichas de estudio': [
+          { name: 'Quizlet', description: 'Aplicación para hacer fichas de estudio.', url: 'https://quizlet.com/es' }
+        ]
+      };
+
+      if (intereses && links.hasOwnProperty(intereses)) {
+        var container = document.getElementById('actividadesContainer');
+        var interestLinks = links[intereses];
+        interestLinks.forEach(link => {
+          var linkElement = document.createElement('a');
+          linkElement.textContent = link.name;
+          linkElement.href = link.url;
+          linkElement.target = "_blank";
+          linkElement.classList.add('link-btn');
+          container.appendChild(linkElement);
+        
+          var descriptionElement = document.createElement('p');
+          descriptionElement.textContent = link.description;
+          container.appendChild(descriptionElement);
+        });
+      } else {
+        var noResults = document.createElement('p');
+        noResults.textContent = "No se encontraron recursos para este interés.";
+        container.appendChild(noResults);
+      }
+    }
+  </script>
 </body>
 </html>
