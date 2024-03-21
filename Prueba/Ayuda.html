@@ -43,7 +43,7 @@
       display: block;
       width: 100%;
       padding: 10px;
-      background-color: #007bff; /* Color del botón "Buscar" */
+      background-color: #007bff; 
       color: #fff;
       border: none;
       border-radius: 5px;
@@ -87,7 +87,7 @@
       line-height: 1.5;
     }
     .guardar {
-      background-color: #28a745; /* Color del botón "Guardar" */
+      background-color: #28a745; 
       color: #fff;
       border: none;
       border-radius: 5px;
@@ -105,7 +105,7 @@
       margin-top: 20px;
       width: 100%;
       padding: 10px;
-      background-color: #ff9800; /* Color del botón "Enlaces" */
+      background-color: #ff9800; 
       color: #fff;
       border: none;
       border-radius: 5px;
@@ -158,8 +158,6 @@
       } else if (intereses === 'historia' && areas === 'literatura') {
         agregarActividad("Leer y analizar obras literarias de la época victoriana", "La literatura victoriana es un período de la literatura británica caracterizado por una amplia gama de estilos y géneros.");
         agregarActividad("Investigar sobre la relación entre literatura y política en el siglo XX", "La literatura ha desempeñado un papel importante en la expresión de ideas políticas y sociales a lo largo de la historia.");
-        agregarActividad("Leer y analizar obras literarias de la época victoriana", "La literatura victoriana es un período de la literatura británica caracterizado por una amplia gama de estilos y géneros.");
-        agregarActividad("Investigar sobre la relación entre literatura y política en el siglo XX", "La literatura ha desempeñado un papel importante en la expresión de ideas políticas y sociales a lo largo de la historia.");
       } else if (intereses === 'arte' && areas === 'dibujo') {
         agregarActividad("Dibujar paisajes urbanos utilizando técnicas de perspectiva", "La perspectiva es una técnica utilizada en el dibujo para representar la profundidad y la distancia en una imagen.");
         agregarActividad("Crear retratos realistas con lápices de colores", "El retrato es un género artístico que representa a una persona o grupo de personas de manera realista.");
@@ -177,17 +175,16 @@
         mostrarDetalle(actividad, detalle);
         mostrarDetalle(actividad, detalle);
       });
-      
-      // Crear botón "Guardar"
+  
       var guardarBtn = document.createElement('button');
       guardarBtn.textContent = 'Guardar';
       guardarBtn.classList.add('guardar');
       guardarBtn.addEventListener('click', function(event) {
-        event.stopPropagation(); // Evitar que el clic en el botón active el evento de la actividad
+        event.stopPropagation(); 
         guardarActividad(actividad, detalle);
       });
       
-      actividadElement.appendChild(guardarBtn); // Agregar el botón a la actividad
+      actividadElement.appendChild(guardarBtn); 
       actividadesContainer.appendChild(actividadElement);
     }
 
@@ -204,7 +201,6 @@
     }
 
     function guardarActividad(actividad, detalle) {
-      // Aquí puedes implementar la lógica para guardar la actividad en la canasta de tareas
       alert('Actividad guardada: ' + actividad);
     }
   </script>
